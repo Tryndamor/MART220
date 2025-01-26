@@ -14,18 +14,18 @@ function draw ()
 
     fill (210,180,140);
     strokeWeight(2);
-    stroke(0,0,0);
+    stroke(0,0,0);                  //Crust
     circle (250,250,350);
     
     fill (245, 175, 60);
     stroke(139,0,0);
     strokeWeight(2);
-    circle (250,250,300);
+    circle (250,250,300);           //Cheese
 
-    line (250,100,250,400);
+    line (250,100,250,400);         //Slice cuts
     line (100,250,400,250);
 
-    fill(180,50,20)
+    fill(180,50,20)                 //ALL PEPPERONIS
     for (let i = 0; i < PepperoniX.length; i++)
     {
         circle (PepperoniX[i],PepperoniY[i],PepperoniD[i]);
