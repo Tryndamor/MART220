@@ -11,10 +11,31 @@ var y = 100
 var mouseClickX = -1
 var mouseClickY = -1
 
+var pizzaImage;
+var pizzaImageX = 0;
+var pizzaImageY = 0;
+var timerValue = 20;
+var pizzaImageMoveX = 50;
+var pizzaImageMoveY = 10;
 
+var nymeriaSolo;
+var nymeriaSoloX = 400;
+var nymeriaSoloY = 50;
+
+
+var wowLogo;
+
+
+function preload()
+{
+    pizzaImage = loadImage('../Images/AnimatedPizza1.png');
+    nymeriaSolo = loadImage('../Images/NYMERIAsolo.png');
+    wowLogo = loadImage('../Images/Wowlogo.png');
+}
 function setup()
 {
     createCanvas(500,500);
+    setInterval(timeIt, 1000);
 }
 
 function draw ()
@@ -25,6 +46,10 @@ function draw ()
     mouseClick();
     movePepperonis();
     titleAndName();
+    displayTimer();
+    image(pizzaImage,pizzaImageX,50,100,100);
+    image(nymeriaSolo, nymeriaSoloX, nymeriaSoloY, 100, 100);
+    image(wowLogo,30,350,160,200);
 }
 
 function drawPizza()
@@ -79,11 +104,35 @@ function movePepperonis()
 function titleAndName()
 {
     fill(180,50,20);
-    textSize (20);
-    text ("Trevor Kleh", width-120, height-20);
-    text ("Delicious Pepperoni Pizza", 10, 30);
+    textSize (22);
+    textFont("Caveat");
+    text ("Trevor Kleh", 430, 470);
+    text ("Delicious Pepperoni Pizza", 105, 30);
 }
-
+function displayTimer()
+{
+    fill(255);
+    textSize(20);
+    textAlign(CENTER);
+    text("Time Left: " + timerValue, width / 2, 30);
+}
+function timeIt()
+{
+    if (timerValue > 0)
+    {
+        timerValue--;
+        pizzaImageX += pizzaImageMoveX;
+        pizzaImageY += pizzaImageMoveY;
+    }
+    if (pizzaImageX >= width -20 || pizzaImageX <= 0)
+    {
+        pizzaImageMoveX *= -1;
+    }
+    if (pizzaImageY >= height - 200 || pizzaImageY <= 0)
+    {
+        pizzaImageMoveY *= -1;
+    }
+}
 function movement() 
 {
     fill(20, 24, 40);
@@ -96,6 +145,23 @@ function movement()
         if (key === 'd') x += 5;  // Right
         if (key === 'w') y -= 5;  // Up
         if (key === 's') y += 5;  // Down
+    }
+
+    if (nymeriaSoloX < pizzaImageX)  // This explains nymerias movement in relation to the pizzaimage on X axis, chasing it.
+    {
+        nymeriaSoloX++;
+    }
+    else if (nymeriaSoloX > pizzaImageX)
+    {
+        nymeriaSoloX--;
+    }
+    if (nymeriaSoloY < pizzaImageMoveY)  // This explains nymerias movement in relation to the pizzaimage on Y axis, chasing it.
+    {
+        nymeriaSoloY++;
+    }
+    else if (nymeriaSoloY > pizzaImageY)
+    {
+        nymeriaSoloY--;
     }
 }
 
