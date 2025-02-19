@@ -1,4 +1,4 @@
-var knight;
+
 var knightFrames = [];
 var currentFrame = 0;
 var frameDelay = 5;
