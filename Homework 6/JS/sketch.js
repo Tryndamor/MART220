@@ -1,4 +1,4 @@
-var knightFrames = [];
+var knightFrames = { attack: [], idle: [] };
 var currentFrame = 0;
 var frameDelay = 5;
 var timer = 0;
@@ -6,6 +6,7 @@ var food;
 var knightX = 400, knightY = 100, knightWidth = 100, knightHeight = 100;
 var foodWidth = 60, foodHeight = 60;
 var attackPath = [];
+var idlePath = [];
 var foodTimer = 0;
 var foodDelay = 120;
 var score = 0;
@@ -14,6 +15,7 @@ var gameIsOver = false;
 
 function preload() 
 {
+    idlePath = loadStrings("./AnimationAssets/Idle.txt");
     attackPath = loadStrings("./AnimationAssets/Attack.txt");
     food = new FoodClass(200, 200);
 }
@@ -22,10 +24,15 @@ function setup()
 {
     createCanvas(800, 800);
     frameRate(60);
+    for (var i = 0; i < idlePath.length; i++)
+    {
+        knightFrames.idle[i] = loadImage(idlePath[i]);
+    }
     for (var i = 0; i < attackPath.length; i++)
     {
-        knightFrames[i] = loadImage(attackPath[i]);
+        knightFrames.attack[i] = loadImage(attackPath[i]);
     }
+    knight = new KnightClass("./AnimationAssets/Idle.txt", knightX, knightY); // Initialize KnightClass
     gameIsOver = false;
 }
 
@@ -55,7 +62,7 @@ function updateAnimation()
     timer++;
     if (timer >= frameDelay) 
     {
-        currentFrame = (currentFrame + 1) % knightFrames.length;
+        currentFrame = (currentFrame + 1) % getCurrentKnightFrames().length;
         timer = 0;
     }
 }
@@ -72,7 +79,8 @@ function updateFoodMovement()                                    // Randomize fo
 
 function renderKnightImage() 
 {
-    image(knightFrames[currentFrame], knightX, knightY, knightWidth, knightHeight);
+    var currentFrames = getCurrentKnightFrames();
+    image(currentFrames[currentFrame], knightX, knightY, knightWidth, knightHeight);
 }
 
 function knightMovement() 
@@ -157,4 +165,16 @@ function titleText()
     fill(0,102, 153);
     textAlign(CENTER, TOP);
     text("Trevor Kleh - Animated Knight", width / 2, 20);       //This is showing the Title of the game at the top
+}
+
+function getCurrentKnightFrames()
+{
+    if (keyIsDown(65) || keyIsDown(68) || keyIsDown(87) || keyIsDown(83))
+    {
+        return knightFrames.attack; // Return attack frames if any movement key is pressed
+    }
+    else
+    {
+        return knightFrames.idle; // Return idle frames if no movement key is pressed
+    }
 }
