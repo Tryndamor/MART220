@@ -32,7 +32,6 @@ function setup()
     {
         knightFrames.attack[i] = loadImage(attackPath[i]);
     }
-    knight = new KnightClass("./AnimationAssets/Idle.txt", knightX, knightY);
     gameIsOver = false;
 }
 
