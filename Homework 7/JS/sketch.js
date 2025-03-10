@@ -125,20 +125,21 @@ function renderBadFood()
 
 function checkFoodCollision()                                   // This is checking the collision of the knight to the food
 {
-    if (food.checkCollision(knightX, knightY, knightWidth, knightHeight)) 
+    if (collideRectRect(knightX, knightY, knightWidth, knightHeight, food.x, food.y, foodWidth, foodHeight))
     {
         food.randomizePosition();  
-        score++;
+        score++;                                                // Adds to the score 
         goodFoodSound.play();
     }
 }
 
 function checkBadFoodCollision()                               // This is checking the collision of the knight to the bad food
 {
-    if (badFood.checkCollision(knightX, knightY, knightWidth, knightHeight)) 
+    
+    if (collideRectRect(knightX, knightY, knightWidth, knightHeight, badFood.x, badFood.y, foodWidth, foodHeight))
     {
         badFood.randomizePosition();
-        score--; // Decrement the score
+        score--;                                               // Decrement the score
         badFoodSound.play();
     }
 }
@@ -197,11 +198,11 @@ function getCurrentKnightFrames()
 {
     if (keyIsDown(65) || keyIsDown(68) || keyIsDown(87) || keyIsDown(83))
     {
-        return knightFrames.attack; // Return attack frames if any movement key is pressed
+        return knightFrames.attack;                             // Return attack frames if any movement key is pressed
     }
     else
     {
-        return knightFrames.idle; // Return idle frames if no movement key is pressed
+        return knightFrames.idle;                               // Return idle frames if no movement key is pressed
     }
 }
 
