@@ -1,0 +1,10 @@
+./AnimationAssets/Attack (1).png
+./AnimationAssets/Attack (2).png
+./AnimationAssets/Attack (3).png
+./AnimationAssets/Attack (4).png
+./AnimationAssets/Attack (5).png
+./AnimationAssets/Attack (6).png
+./AnimationAssets/Attack (7).png
+./AnimationAssets/Attack (8).png
+./AnimationAssets/Attack (9).png
+./AnimationAssets/Attack (10).png
