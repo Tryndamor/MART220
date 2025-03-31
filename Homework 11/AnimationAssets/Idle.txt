@@ -1,0 +1,10 @@
+./AnimationAssets/Idle (1).png
+./AnimationAssets/Idle (2).png
+./AnimationAssets/Idle (3).png
+./AnimationAssets/Idle (4).png
+./AnimationAssets/Idle (5).png
+./AnimationAssets/Idle (6).png
+./AnimationAssets/Idle (7).png
+./AnimationAssets/Idle (8).png
+./AnimationAssets/Idle (9).png
+./AnimationAssets/Idle (10).png
