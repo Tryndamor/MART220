@@ -6,6 +6,7 @@ let img4;
 let img5;
 let myFont;
 
+
 function preload()
 {
     img = loadImage("Texture/BlackRipple.jpg");
