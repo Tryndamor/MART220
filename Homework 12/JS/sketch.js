@@ -26,7 +26,6 @@ function draw()
 {
     background(200);
     
-  
     push();
     translate(0,0);
     rotateX(frameCount * 0.02);
